@@ -1,0 +1,129 @@
+{
+	// Place your snippets for javascriptreact here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"console.log": {
+		"prefix": "console.log",
+		"description": "console.log",
+		"body": [
+			"console.log('$1');",
+			"$0"
+		]
+	},
+	"Generic Import": {
+		"prefix": "import from",
+		"description": "import ... from ...",
+		"body": [
+			"import $2 from '$1';",
+			"$0"
+		]
+	},
+	"Generic Import w curly braces": {
+		"prefix": "impp",
+		"description": "import { ... } from ...",
+		"body": [
+			"import { $2 } from '$1';",
+			"$0"
+		]
+	},
+	"import react": {
+		"prefix": "import React from 'react';",
+		"description": "import React from 'react';",
+		"body": [
+			"import React from 'react';",
+			"$0"
+		]
+	},
+	"import react-native": {
+		"prefix": "import from reactnative",
+		"description": "import { ... } from 'react-native';",
+		"body": [
+			"import { ${1:StyleSheet}, ${2:View}, ${3:Text}, ${4:TouchableOpacity} } from 'react-native';",
+			"$0"
+		]
+	},
+	"export default class react component": {
+		"prefix": "export default class react component",
+		"description": "React Native export component",
+		"body": [
+			"export default class ${1:ScreenName} extends React.Component {",
+			"  $0",
+			"}",
+		]
+	},
+	"constructor": {
+		"prefix": "constructor",
+		"description": "React Native constructor method",
+		"body": [
+			"constructor(props) {",
+			"  super(props);",
+			"  $0",
+			"}",
+		]
+	},
+	"thisstate": {
+		"prefix": "this.state = ",
+		"description": "React Native constructor, this.state =",
+		"body": [
+			"this.state = {",
+			"  $0",
+			"};",
+		]
+	},
+	"componentDidMount": {
+		"prefix": "componentDidMount",
+		"description": "React Native componentDidMount method",
+		"body": [
+			"componentDidMount() {",
+			"  $0",
+			"}",
+		]
+	},
+	"componentWillUnmount": {
+		"prefix": "componentWillUnmount",
+		"description": "React Native componentWillUnmount method",
+		"body": [
+			"componentWillUnmount() {",
+			"  $0",
+			"}",
+		]
+	},
+	"render": {
+		"prefix": "render",
+		"description": "React Native render function",
+		"body": [
+			"render() {",
+			"  const { $1 } = this.props;",
+			"  return (",
+			"    $0",
+			"  );",
+			"}"
+		]
+	},
+	"conststyles": {
+		"prefix": "const styles",
+		"description": "const styles",
+		"body": [
+			"const styles = StyleSheet.create({",
+			"  $0",
+			"});",
+		]
+	},
+	"Re-export in index.js": {
+		"prefix": "reexport { default as ",
+		"description": "Re-export class in the same folder, in index.js",
+		"body": [
+			"export { default as $0 } from './$0';"
+		]
+	}
+}
