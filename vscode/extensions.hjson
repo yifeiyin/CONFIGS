@@ -6,5 +6,6 @@
     "wangweixuan.yithemes",                      // Yi Dark & Yi Light Themes
     "streetsidesoftware.code-spell-checker"      // code spell checker
     "editorconfig.editorconfig",                 // Editor config
+    "visualstudioexptteam.vscodeintellicode",    // VSCode IntelliCode
   ]
 }
