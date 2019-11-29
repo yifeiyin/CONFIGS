@@ -23,10 +23,11 @@
 
 	# stash
 	sp = stash push
+	sl = stash list
+	spm = stash push -m
 	spop = stash pop
 	sapply = stash apply
 	sdrop = stash drop
-	slist = stash list
 	sshow = stash show -p
 
 	# log
