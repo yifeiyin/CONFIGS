@@ -17,3 +17,7 @@ Install & update
 - update `brew`
 - `brew install trash`
 - `brew install vim`
+
+
+## Ref
+- https://sourabhbajaj.com/mac-setup/
