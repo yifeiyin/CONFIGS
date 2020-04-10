@@ -18,6 +18,8 @@ Install & update
 - `brew install trash`
 - `brew install vim`
 
+## SSH
+- https://gist.github.com/yifeiyin/41f2bed9b6af7e27e1db26fd2d9cd9e3
 
 ## Ref
 - https://sourabhbajaj.com/mac-setup/
