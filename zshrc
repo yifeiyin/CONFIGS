@@ -1,36 +1,52 @@
 export ZSH="/Users/yyin/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
-ZSH_THEME="pi"
+export PATH="/Users/yyin/yy/bin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+export EDITOR='vim'
+export ZSH_THEME="pi"
+export PREFERRED_TERMINAL="iTerm2"  # One of iTerm2 or Terminal, personal use only
 
 plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
     vi-mode
+    docker
+    docker-compose
 )
 
-export MANPATH="/usr/local/man:$MANPATH"
-export EDITOR='vim'
+# For option explainations, check original template:
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
+# CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+# DISABLE_AUTO_TITLE="true"
+ENABLE_CORRECTION="false"
+COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"   # makes VCS status check faster for large repo
+
+
+source "$ZSH/oh-my-zsh.sh"
+
+
+# Custom Aliases
 alias vimr="vim -R"
 
 
 # University SSH
-export UNISSH="USER@HOST.EXAMPLE.COM"
+export UNISSH="yinyife2@mathlab.utsc.utoronto.ca"
 alias unissh="ssh $UNISSH"
 
 
-# For edit rc file and re-source it immediately
+########################## Utility Tools ##########################
+
+### For edit rc file and re-source it immediately
 vimzshrc() { vim ~/.zshrc && source ~/.zshrc }
 
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-
-# function taken from https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+### Terminal file manager: lf https://github.com/gokcehan/lf
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
+# function taken from https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
+lfcd() {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -39,21 +55,35 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-bindkey -s '^o' 'lfcd\n'
+bindkey -s '^O' 'lfcd\n'
 
 
-# CASE_SENSITIVE="true"         # case-sensitive completion
-# HYPHEN_INSENSITIVE="true"     # hyphen-insensitive completion
-                                # Case-sensitive completion must be off.
-                                # _ and - will be interchangeable.
-# DISABLE_AUTO_TITLE="true"     # disable auto-setting terminal title.
-ENABLE_CORRECTION="true"        # command auto-correction
-COMPLETION_WAITING_DOTS="true"  # display red dots whilst waiting for completion.
+### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-source $ZSH/oh-my-zsh.sh
+########################## Other Tools ##########################
 
+
+### Android Studio https://developer.android.com/studio
+export ANDROID_SDK="/Users/yyin/Library/Android/sdk"
+export PATH="/Users/yyin/Library/Android/sdk/platform-tools:$PATH"
+
+
+### Haskell ghcup https://www.haskell.org/ghcup/
+# Official doc uses GHCUP_INSTALL_BASE_PREFIX first, then fallback to $HOME/.ghcup
+# [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export fpath=($fpath "$HOME/.ghcup/etc")  # auto complete
+
+
+### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
+# PYENV_ROOT="~/.pyenv" (This is the default)
+eval "$(pyenv init -)"
+export PATH="$PATH:/Users/yyin/.local/bin"
+
+
+### Node version maanger: nvm https://github.com/nvm-sh/nvm#installing-and-updating
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
