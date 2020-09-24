@@ -20,6 +20,26 @@
 "                     :tabp    :tabn
 "                     gt       gT
 
+" Windows:            ctrl-w +
+"                               ctrl-w        switch
+"                               ctrl-[hjkl]   switch
+"                               c             close current
+"                               n             new
+"                               ctrl-[HJKL]   move current
+"                               ctrl-[<>-+]   resize
+
+" Terminal:           :term                   open new terminal window
+"                     ctrl-w +
+"                              ctrl-c         close
+"                              :              enter command
+
+" Fzf:                :FZF PATH               start find file from path
+"                                             defaults to pwd
+"                     <enter>     current window
+"                     ctrl-t      tab
+"                     ctrl-x      split
+"                     ctrl-v      vsplit
+
 
 " NOTE: In vimrc file, double quotes (
 " --- Things to look into ---
@@ -66,6 +86,11 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 
 
+" --- enable fzf ---
+" See https://github.com/junegunn/fzf/blob/master/README-VIM.md
+set rtp+=/usr/local/opt/fzf
+
+
 " --- About Trailing Space ---
 "      https://stackoverflow.com/questions/32588604/vim-airline-what-is-trailing1
 "      Use  :AirlineToggleWhitespace  to toggle trailing space warnings
@@ -79,7 +104,8 @@ set number
 set relativenumber
 set cursorline                            " Highlight current line
 highlight clear CursorLine                " Disables the underline
-highlight CursorLine ctermbg=255          " cursor line color
+highlight CursorLine ctermbg=black        " cursor line color  (for dark theme)
+highlight CursorLine ctermbg=lightgray    " cursor line color
 highlight CursorLineNR ctermbg=lightBlue  " cursor line line number color
 highlight MatchParen cterm=underline,bold ctermbg=none ctermfg=green   " matching paren color
 
@@ -98,6 +124,23 @@ map <Enter> o<ESC>
 "map x to redirect it into blackhole register
 nnoremap x "_x
 
+
+" --- Use persistent history ---
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
+
+
+" --- Restore Cursor ---
+" See  :h restore-cursor
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
+
 " --- ShowChanges ---
 " See  :h :DiffOrig  . This is also in |vimrc.example.vim|
 if !exists(":DiffOrig")
@@ -107,7 +150,7 @@ endif
 
 
 " --- Compile and Run Commands ---
-:command! C w || !set $1 $(echo "%" | sed 's/\.c//g'); clear; echo -e "$(date)\n"; gcc -Wall -o $1 "%" && ./$1 && rm $1
+" :command! C w || !set $1 $(echo "%" | sed 's/\.c//g'); clear; echo -e "$(date)\n"; gcc -Wall -o $1 "%" && ./$1 && rm $1
 :command! Py w || !clear; echo -e "$(date)\n"; python3 "%"
 :command! Pyi w || !clear; echo -e "$(date)\n"; python3 -i "%"
 " --- Change ^w +/- Behavior ---
@@ -116,6 +159,13 @@ nnoremap <silent> <C-W>- :exe "resize " . (winheight(0) * 3/4)<CR>
 nnoremap <silent> <C-W>> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
 nnoremap <silent> <C-W>< :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
 
+" --- Remap Scroll Wheel Speed ---
+" so it is not as fast as the default
+nnoremap <ScrollWheelUp> <C-Y>
+nnoremap <ScrollWheelDown> <C-E>
+
+" --- Always show 5 lines when scrolling ---
+set scrolloff=5
 
 " --- Add ^k, ^j Behavior ---
 nnoremap <C-K> 3kzz
@@ -139,7 +189,7 @@ nnoremap <C-J> 3jzz
 " for keeping undo history after closing Vim entirely. Vim will complain if you
 " try to quit without saving, and swap files will keep you safe if your computer
 " crashes.
-set hidden
+" set hidden
 
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
