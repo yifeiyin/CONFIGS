@@ -40,8 +40,10 @@
 "                     ctrl-x      split
 "                     ctrl-v      vsplit
 
+" To View History:    :changes    list line change history
+"                     g;    g,    goto older/newer changed line
 
-" NOTE: In vimrc file, double quotes (
+
 " --- Things to look into ---
 " AUTOMATIC WORD WRAPING
 " 'wm' = word margin
