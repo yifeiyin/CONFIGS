@@ -26,6 +26,9 @@ function shell_prompt_git_branch() {
 
 export PS1='\n$(shell_prompt_exit_code)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[34;1m\]\W\[\033[m\]$(shell_prompt_git_branch)\$ '
 
+#### Vim mode
+set -o vi
+
 #### Utility
 alias ll='ls -alH'
 alias vimr='vim -R'
