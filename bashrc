@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 #### Pager and editor
-export PAGER='less -R'
+export PAGER='less -Ri'
 export EDITOR='vim'
 
 #### Simple prompt
