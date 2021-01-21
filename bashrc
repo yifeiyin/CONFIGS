@@ -1,9 +1,4 @@
-###############################
-# Terminal Environment
-###############################
-
-export TERM="xterm-256color"
-
+#!/usr/bin/env bash
 
 ###############################
 # Prompt
@@ -31,55 +26,8 @@ function shell_prompt_git_branch() {
 
 export PS1='\n\[\033[38;5;9m\]$(shell_prompt_exit_code)\[\033[m\]\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[34;1m\]\W\[\033[m\] \[\033[35m\]$(shell_prompt_git_branch)\[\033[m\]\$ '
 
-
-###############################
-# Pager and editor settings
-###############################
-
-export PAGER='less -Ri'
-export EDITOR='vim'
-
-
 ###############################
 # Vim mode
 ###############################
 
 set -o vi
-
-
-###############################
-# Aliases
-###############################
-
-alias ll='ls -alH'
-alias vimr='vim -R'
-
-function vimrc() {
-    vim ~/.bashrc && source ~/.bashrc
-}
-
-
-###############################
-# Git Aliases
-###############################
-
-alias gs='git status'
-
-alias ga='git add'
-alias gaa='git add -A'
-
-alias gc='git commit -v'
-
-alias gco='git checkout'
-
-alias gp='git push'
-alias gpf='git push --force-with-lease'
-alias gpff='git push --force'
-
-alias grb='git rebase'
-alias grbi='git rebase --interactive'
-alias grbc='git rebase --continue'
-alias grba='git rebase --abort'
-
-alias gwt='git worktree'
-alias gbr='git branch'

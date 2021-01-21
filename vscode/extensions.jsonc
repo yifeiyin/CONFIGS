@@ -4,8 +4,8 @@
     "ephoton.indent-switcher",                   // 4 to 2 indent switch
     "ritwickdey.liveserver",                     // Live Server
     "wangweixuan.yithemes",                      // Yi Dark & Yi Light Themes
-    "streetsidesoftware.code-spell-checker"      // code spell checker
+    "streetsidesoftware.code-spell-checker",     // code spell checker
     "editorconfig.editorconfig",                 // Editor config
-    "visualstudioexptteam.vscodeintellicode",    // VSCode IntelliCode
+    "visualstudioexptteam.vscodeintellicode"     // VSCode IntelliCode
   ]
 }

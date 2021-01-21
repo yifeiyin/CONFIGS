@@ -1,9 +1,0 @@
-[alias]
-    s = status
-    br = branch
-    cm = commit -m
-    co = checkout
-    sw = switch
-    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-    l = log --oneline --graph
-    la = log --oneline --graph --all

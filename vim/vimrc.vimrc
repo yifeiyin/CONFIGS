@@ -8,14 +8,8 @@
 " To Change Color:    :highlight ColorColumn ctermbg=0 guibg=lightgrey
 " For More Columns:   :let &colorcolumn="80,".join(range(120,200),",")
 "
-" Suspend Vim:        ctrl-Z  to suppend
-"                     $ fg    to resume, fg for foreground
-" Start A New Shell:  :sh      :shell
-"                     :!bash
-" To Exit:            $ exit -or- ctrl-D
-"
 " Move By Screen Line: gj, gk
-
+"
 " Tabs:               :tabe[dit] <file>
 "                     :tabp    :tabn
 "                     gt       gT
@@ -73,6 +67,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'morhetz/gruvbox'
     Plug 'wakatime/vim-wakatime'
+    " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
 
@@ -119,12 +114,30 @@ augroup CursorLine
 augroup END
 
 
-" --- Enter -> New Line ---
-map <Enter> o<ESC>
-"map <S-Enter> O<ESC>
+map <Enter> o<ESC>          " enter -> insert new line
+map <S-Enter> O<ESC>        " shift enter -> insert above
 
-"map x to redirect it into blackhole register
-nnoremap x "_x
+nnoremap x "_x              " Discard x
+
+map Y y$                            " Make Y behave like D, C
+nnoremap <C-L> :nohl<CR><C-L>       " Redraw screen also set no highlight
+
+
+" --- Add ^k, ^j Behavior ---
+nnoremap <C-K> 3kzz
+nnoremap <C-J> 3jzz
+
+
+" --- Change ^w +/- Behavior ---
+nnoremap <silent> <C-W>+ :exe "resize " . (winheight(0) * 5/4)<CR>
+nnoremap <silent> <C-W>- :exe "resize " . (winheight(0) * 3/4)<CR>
+nnoremap <silent> <C-W>> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
+nnoremap <silent> <C-W>< :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
+
+" --- Remap Scroll Wheel Speed ---
+" so it is not as fast as the default
+nnoremap <ScrollWheelUp> <C-Y>
+nnoremap <ScrollWheelDown> <C-E>
 
 
 " --- Use persistent history ---
@@ -150,131 +163,48 @@ if !exists(":DiffOrig")
           \ | wincmd p | diffthis
 endif
 
-
-" --- Compile and Run Commands ---
-" :command! C w || !set $1 $(echo "%" | sed 's/\.c//g'); clear; echo -e "$(date)\n"; gcc -Wall -o $1 "%" && ./$1 && rm $1
-:command! Py w || !clear; echo -e "$(date)\n"; python3 "%"
-:command! Pyi w || !clear; echo -e "$(date)\n"; python3 -i "%"
-" --- Change ^w +/- Behavior ---
-nnoremap <silent> <C-W>+ :exe "resize " . (winheight(0) * 5/4)<CR>
-nnoremap <silent> <C-W>- :exe "resize " . (winheight(0) * 3/4)<CR>
-nnoremap <silent> <C-W>> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
-nnoremap <silent> <C-W>< :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
-
-" --- Remap Scroll Wheel Speed ---
-" so it is not as fast as the default
-nnoremap <ScrollWheelUp> <C-Y>
-nnoremap <ScrollWheelDown> <C-E>
-
 " --- Always show 5 lines when scrolling ---
 set scrolloff=5
 
-" --- Add ^k, ^j Behavior ---
-nnoremap <C-K> 3kzz
-nnoremap <C-J> 3jzz
 
 " --- Some Settings Found On Internet ---
 " URL: http://vim.wikia.com/wiki/Example_vimrc
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 "------------------------------------------------------------
 
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
-" set hidden
-
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
-
-" Better command-line completion
 set wildmenu
-
-" Show partial commands in the last line of the screen
 set showcmd
-
-" Show search results immediately, cursor will not be moved unless press enter
-
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
-" set hlsearch
-
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
-
-"------------------------------------------------------------
-" Usability options
-"
-" Searching
-set ignorecase          " Docase insensitive ...
-set smartcase           " ... unless there is one capital letter
-set incsearch           " Incremental search
-
-" Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start
-
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
-
-" Always display the status line, even if only one window is displayed
+"set hlsearch
 set laststatus=2
-
-" Display a confirm message instead of having error when having unsaved file.
 set confirm
-
-" Use visual bell instead of beeping when doing something wrong
-" set t_vb to empty so it does not beep or flash.
-set visualbell
-set t_vb=
-
-" Enable use of the mouse for all modes
-set mouse=a
+set mouse=a             " Enable mouse support
+set backspace=indent,eol,start
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-""set pastetoggle=<F11>
+" --- Search ---
+set incsearch           " Incremental search
+set ignorecase          " Docase insensitive ...
+set smartcase           " ... unless there is one capital letter
+
+" --- Bell ---
+set visualbell          " Use visual bell...
+set t_vb=               " ...actually, don't beep or flash
+                        " Remove t_vb to make it flash
 
 
-"------------------------------------------------------------
-" Indentation options
-"
-" Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
+" --- Indent ---
+set autoindent
+
+" Use soft indent
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Indentation settings for using hard tabs for indent.
+" Use hard indent
 "set shiftwidth=4
 "set tabstop=4
 
-
-"------------------------------------------------------------
-" Useful mappings
-
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-map Y y$
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
-
+" Use <F11> to toggle between 'paste' and 'nopaste'
+"set pastetoggle=<F11>

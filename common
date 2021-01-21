@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+export EDITOR='vim'
+export PAGER='less -RiFXS'
+# -R --RAW-CONTROL-CHARS   : display raw control sequence for colors
+# -i --ignore-case         : ignore case when searching unless contains uppercase letters
+# -F --quit-if-one-screen
+# -X --no-init             : disable sending termcap initialization and deinitialization strings
+# -S --chop-long-lines     : chop instead of wrap long lines

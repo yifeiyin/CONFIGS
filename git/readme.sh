@@ -3,7 +3,7 @@ git config --global user.name Name
 
 git config --global alias.s status
 git config --global alias.br branch
-git config --global alias.cm "commit -m"
+git config --global alias.c "commit -v"
 git config --global alias.co checkout
 
 git config --global alias.sw switch
@@ -11,4 +11,3 @@ git config --global alias.alias "!git config --list | grep 'alias\\.' | sed 's/a
 
 git config --global alias.l "log --oneline --graph"
 git config --global alias.la "log --oneline --graph --all"
-

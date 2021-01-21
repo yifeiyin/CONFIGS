@@ -1,10 +1,4 @@
-export ZSH="/Users/yyin/.oh-my-zsh"
-export ZSH_CUSTOM="$ZSH/custom"
-export PATH="/Users/yyin/yy/bin:$PATH"
-export MANPATH="/usr/local/man:$MANPATH"
-export EDITOR='vim'
-export ZSH_THEME="pi"
-export PREFERRED_TERMINAL="iTerm2"  # One of iTerm2 or Terminal, personal use only
+#!/usr/bin/env zsh
 
 plugins=(
     git
@@ -15,55 +9,75 @@ plugins=(
     docker-compose
 )
 
-# For option explainations, check original template:
-# https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
-# CASE_SENSITIVE="true"
-HYPHEN_INSENSITIVE="true"
-# DISABLE_AUTO_TITLE="true"
-ENABLE_CORRECTION="false"
-COMPLETION_WAITING_DOTS="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"   # makes VCS status check faster for large repo
-
-
+export ZSH="/Users/yyin/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
+export MANPATH="/usr/local/man:$MANPATH"
 source "$ZSH/oh-my-zsh.sh"
 
 
-# Custom Aliases
-alias vimr="vim -R"
+# Adapted from original template:
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
+HYPHEN_INSENSITIVE="true"
+ENABLE_CORRECTION="false"
+COMPLETION_WAITING_DOTS="true"
 
+
+########################## Personal ##########################
+export ZSH_THEME="pi"
 
 # University SSH
 export UNISSH="yinyife2@mathlab.utsc.utoronto.ca"
 alias unissh="ssh $UNISSH"
 
+# password-store
+export PASSWORD_STORE_GENERATED_LENGTH=16
+export PASSWORD_STORE_CHARACTER_SET='[:alnum:]\!\@\#\$\%\^\&\*\(\)\-\=\[\]\;\,\.\/\?'
+export PASSWORD_STORE_CHARACTER_SET_NO_SYMBOLS='[:alnum:]'
+
+# scripts
+export YY_SCRIPTS=~/Developer/SCRIPTS
+function yy-np() { python3 -i $YY_SCRIPTS/np-starter.py }
+function yy-fgi() { pbpaste | python3 $YY_SCRIPTS/format-github-images.py | pbcopy }
+function yy-h2p() { pbpaste | python3 $YY_SCRIPTS/html2points.py | pbcopy }
+source $YY_SCRIPTS/mymediadl
+source $YY_SCRIPTS/urlpaste
+function qnote() {
+    FILE='/tmp/qnote_editing.md'
+    pushd /Users/yyin/Developer/quick-notes > /dev/null
+    if vim -c 'startinsert' "$FILE" && ./new < "$FILE"; then
+        rm -f "$FILE"
+        git add -A
+        git commit -m "Add new quick note using qnote"
+        git fetch
+        git rebase
+        git push
+    else
+        echo "Stopped"
+    fi
+    popd > /dev/null
+}
 
 ########################## Utility Tools ##########################
 
-### For edit rc file and re-source it immediately
-vimzshrc() { vim ~/.zshrc && source ~/.zshrc }
-
-
-### Terminal file manager: lf https://github.com/gokcehan/lf
-# Use lf to switch directories and bind it to ctrl-o
-# function taken from https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
-lfcd() {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
+### Use ctrl-z to suspend current command
+# Taken from https://unix.stackexchange.com/a/74381
+fancy-ctrl-z () {
+  emulate -LR zsh
+  if [[ $#BUFFER -eq 0 ]]; then
+    bg
+    zle redisplay
+  else
+    zle push-input
+  fi
 }
-bindkey -s '^O' 'lfcd\n'
-
-
-### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
 
 
 ########################## Other Tools ##########################
 
+### PostgreSQL
+export PGDATA='/usr/local/var/postgres'
 
 ### Android Studio https://developer.android.com/studio
 export ANDROID_SDK="/Users/yyin/Library/Android/sdk"
@@ -79,11 +93,38 @@ export fpath=($fpath "$HOME/.ghcup/etc")  # auto complete
 
 ### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
 # PYENV_ROOT="~/.pyenv" (This is the default)
+export PATH="/Users/yyin/.local/bin:$PATH"
 eval "$(pyenv init -)"
-export PATH="$PATH:/Users/yyin/.local/bin"
 
 
 ### Node version maanger: nvm https://github.com/nvm-sh/nvm#installing-and-updating
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+# macOS unlock keychain
+if which security > /dev/null; then
+    function unlock() {
+        if $(security unlock -p 123 2> /dev/null); then
+            echo 'Already unlocked'
+        else
+            security unlock
+        fi
+    }
+fi
+
+# GPG
+if which gpg > /dev/null; then
+    # See https://unix.stackexchange.com/q/257061
+    export GPG_TTY=$(tty)
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+    # See https://gpgtools.tenderapp.com/kb/faq/enter-passphrase-with-pinentry-in-terminal-via-ssh-connection
+    if [[ -n "$SSH_CONNECTION" ]] ;then
+        export PINENTRY_USER_DATA="USE_CURSES=1"
+    fi
+fi

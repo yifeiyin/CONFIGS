@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+alias ll='ls -alHF'
+# -a: all
+# -l: long format
+# -H: human readble size
+# -F: show extra symbol for each type of file
+
+alias vimzshrc='vim ~/.zshrc && source ~/.zshrc'
+alias vimbashrc='vim ~/.bashrc && source ~/.bashrc'
+
+function vimrc() {
+    if grep bash <<<$SHELL > /dev/null; then
+        vimbashrc
+    elif grep zsh <<<$SHELL > /dev/null; then
+        vimzshrc
+    else
+        echo 'Unable to locate shell rc file'
+    fi
+}
+
+########################## vim ##########################
+alias vimr='vim -R'
+
+########################## npm ##########################
+alias npmi='npm start'
+alias npms='npm start'
+alias npmd='npm run develop'
+alias npmb='npm build'
+
+########################## git ##########################
+alias gs='git status'
+
+alias ga='git add'
+alias gaa='git add -A'
+
+alias gc='git commit -v'
+
+alias gco='git checkout'
+
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpff='git push --force'
+
+alias grb='git rebase'
+alias grbi='git rebase --interactive'
+alias grbc='git rebase --continue'
+alias grba='git rebase --abort'
+
+alias gl='git l'
+alias gla='git la'
+
+alias gsw='git switch'
+alias gbr='git branch'
+alias gwt='git worktree'
+
+########################## docker ##########################
+if which docker > /dev/null; then
+    # none
+fi
+
+
+########################## pass ##########################
+if which pass > /dev/null; then
+    alias p='pass'
+    alias psync='pass git fetch && pass git rebase && pass git push'
+fi
