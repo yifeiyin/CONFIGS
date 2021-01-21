@@ -42,6 +42,9 @@ alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gpff='git push --force'
 
+alias gf='git fetch --prune'
+alias gu='git pull --prune'
+
 alias grb='git rebase'
 alias grbi='git rebase --interactive'
 alias grbc='git rebase --continue'
@@ -53,6 +56,8 @@ alias gla='git la'
 alias gsw='git switch'
 alias gbr='git branch'
 alias gwt='git worktree'
+alias gst='git stash'
+alias gtrash='git stash push --include-untracked -m "trash"'
 
 
 ########################## pass ##########################

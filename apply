@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# https://stackoverflow.com/a/3232082/7318257
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+echo 'FROM'
+wc -l "./sh_aliases"
+echo 'TO'
+wc -l "$HOME/.sh_aliases"
+confirm && cp ./sh_aliases "$HOME/.sh_aliases"
+
+echo '--------------'
+
+echo 'FROM'
+wc -l "./vim/vimrc.vimrc"
+echo 'TO'
+wc -l "$HOME/.vimrc"
+confirm && cp "./vim/vimrc.vimrc" "$HOME/.vimrc"
+
+echo '--------------'
+
+echo 'FROM'
+wc -l "./bashrc"
+echo 'TO'
+wc -l "$HOME/.bashrc"
+confirm && cp "./bashrc" "$HOME/.bashrc"
+
+echo '--------------'
+
+echo 'FROM'
+wc -l "./zshrc"
+echo 'TO'
+wc -l "$HOME/.zshrc"
+confirm && cp "./zshrc" "$HOME/.zshrc"
