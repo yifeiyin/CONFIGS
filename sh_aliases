@@ -11,11 +11,14 @@ export LESS='-RiF'
 # -S --chop-long-lines     : chop instead of wrap long lines
 
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ~='cd ~'
 
-alias ll='ls -alHF'
+alias ll='ls -alhF'
 # -a: all
 # -l: long format
-# -H: human readble size
+# -h: human readble size
 # -F: show extra symbol for each type of file
 
 alias vimzshrc='vim ~/.zshrc && source ~/.zshrc'
