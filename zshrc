@@ -12,6 +12,7 @@ plugins=(
 export ZSH="/Users/yyin/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 export MANPATH="/usr/local/man:$MANPATH"
+export ZSH_THEME="pi"
 source "$ZSH/oh-my-zsh.sh"
 
 
@@ -24,7 +25,6 @@ COMPLETION_WAITING_DOTS="true"
 [ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
 
 ########################## Personal ##########################
-export ZSH_THEME="pi"
 
 # University SSH
 export UNISSH="yinyife2@mathlab.utsc.utoronto.ca"
