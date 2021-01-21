@@ -21,6 +21,7 @@ HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 
+[ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
 
 ########################## Personal ##########################
 export ZSH_THEME="pi"

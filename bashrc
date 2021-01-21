@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
+
 ###############################
 # Prompt
 ###############################
