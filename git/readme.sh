@@ -1,6 +1,3 @@
-git config --global user.email email@example.com
-git config --global user.name Name
-
 git config --global alias.s status
 git config --global alias.br branch
 git config --global alias.c "commit -v"
