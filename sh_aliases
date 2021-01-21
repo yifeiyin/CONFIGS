@@ -2,7 +2,8 @@
 
 # These are not really aliases. Leave them here just for convenience.
 export EDITOR='vim'
-export PAGER='less -RiFXS'
+export PAGER='less'
+export LESS='-RiF'
 # -R --RAW-CONTROL-CHARS   : display raw control sequence for colors
 # -i --ignore-case         : ignore case when searching unless contains uppercase letters
 # -F --quit-if-one-screen
