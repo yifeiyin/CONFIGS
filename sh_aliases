@@ -54,11 +54,6 @@ alias gsw='git switch'
 alias gbr='git branch'
 alias gwt='git worktree'
 
-########################## docker ##########################
-if which docker > /dev/null; then
-    # none
-fi
-
 
 ########################## pass ##########################
 if which pass > /dev/null; then

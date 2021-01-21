@@ -117,7 +117,8 @@ augroup END
 map <Enter> o<ESC>          " enter -> insert new line
 map <S-Enter> O<ESC>        " shift enter -> insert above
 
-nnoremap x "_x              " Discard x
+"                           " Discard x
+nnoremap x "_x
 
 map Y y$                            " Make Y behave like D, C
 nnoremap <C-L> :nohl<CR><C-L>       " Redraw screen also set no highlight
