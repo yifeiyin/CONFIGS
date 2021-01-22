@@ -72,6 +72,9 @@ alias gsw='git switch'
 alias gbr='git branch'
 alias gwt='git worktree'
 alias gst='git stash'
+
+alias gcleanff='git clean -fd'
+alias grst='git reset'
 alias gtrash='git stash push --include-untracked -m "trash"'
 
 

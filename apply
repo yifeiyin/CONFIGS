@@ -18,7 +18,7 @@ echo 'FROM'
 wc -l "./sh_aliases"
 echo 'TO'
 wc -l "$HOME/.sh_aliases"
-confirm && cp ./sh_aliases "$HOME/.sh_aliases"
+confirm && cp ./sh_aliases "$HOME/.sh_aliases" && source ./sh_aliases
 
 echo '--------------'
 
@@ -31,15 +31,15 @@ confirm && cp "./vim/vimrc.vimrc" "$HOME/.vimrc"
 echo '--------------'
 
 echo 'FROM'
-wc -l "./bashrc"
+wc -l ./bashrc
 echo 'TO'
 wc -l "$HOME/.bashrc"
-confirm && cp "./bashrc" "$HOME/.bashrc"
+confirm && cp ./bashrc "$HOME/.bashrc" && source ./bashrc
 
 echo '--------------'
 
 echo 'FROM'
-wc -l "./zshrc"
+wc -l ./zshrc
 echo 'TO'
 wc -l "$HOME/.zshrc"
-confirm && cp "./zshrc" "$HOME/.zshrc"
+confirm && cp ./zshrc "$HOME/.zshrc" && source ./zshrc

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 plugins=(
-    git
+    git-prompt
     zsh-autosuggestions
     zsh-syntax-highlighting
     vi-mode
@@ -11,16 +11,17 @@ plugins=(
 
 export ZSH="/Users/yyin/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
-export MANPATH="/usr/local/man:$MANPATH"
 export ZSH_THEME="pi"
-source "$ZSH/oh-my-zsh.sh"
-
 
 # Adapted from original template:
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
+
+source "$ZSH/oh-my-zsh.sh"
+
+##############################################################
 
 [ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
 
@@ -107,7 +108,8 @@ export NVM_DIR="$HOME/.nvm"
 ### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-# macOS unlock keychain
+
+### macOS unlock keychain
 if which security > /dev/null; then
     function unlock() {
         if $(security unlock -p 123 2> /dev/null); then
@@ -118,7 +120,8 @@ if which security > /dev/null; then
     }
 fi
 
-# GPG
+
+### GPG
 if which gpg > /dev/null; then
     # See https://unix.stackexchange.com/q/257061
     export GPG_TTY=$(tty)
