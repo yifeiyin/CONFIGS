@@ -42,4 +42,4 @@ echo 'FROM'
 wc -l ./zshrc
 echo 'TO'
 wc -l "$HOME/.zshrc"
-confirm && cp ./zshrc "$HOME/.zshrc" && source ./zshrc
+confirm && cp ./zshrc "$HOME/.zshrc" && echo 'Need to restart zsh'

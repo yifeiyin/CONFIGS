@@ -44,6 +44,7 @@ alias npmd='npm run develop'
 alias npmb='npm build'
 
 ########################## git ##########################
+# Adapted from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
 alias gs='git status'
 
 alias ga='git add'
@@ -67,6 +68,11 @@ alias grba='git rebase --abort'
 
 alias gl='git l'
 alias gla='git la'
+
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdw='git diff --word-diff'
+alias gdcw='git diff --cached --word-diff'
 
 alias gsw='git switch'
 alias gbr='git branch'
