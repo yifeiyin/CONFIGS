@@ -10,15 +10,26 @@ export LESS='-RiF'
 # -X --no-init             : disable sending termcap initialization and deinitialization strings
 # -S --chop-long-lines     : chop instead of wrap long lines
 
-alias ls='ls --color=auto'
+# https://stackoverflow.com/a/29239609/7318257
+# function if_os() { [[ $OSTYPE == *$1* ]]; }
+function if_nix() {
+    case "$OSTYPE" in
+        *linux*|*hurd*|*msys*|*cygwin*|*sua*|*interix*) sys="gnu";;
+        *bsd*|*darwin*) sys="bsd";;
+        *sunos*|*solaris*|*indiana*|*illumos*|*smartos*) sys="sun";;
+    esac
+    [[ "${sys}" == "$1" ]];
+}
+
+if_nix gnu && alias ls='ls --color=auto -F'
+if_nix bsd && alias ls='ls -GF'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# LSCOLORS for BSD; LS_COLORS for linux
 # And here is a good website to modify it https://geoff.greer.fm/lscolors/
-export LSCOLORS='exfxcxdxbxegedabagacad'
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+if_nix bsd && export LSCOLORS='exfxcxdxbxegedabagacad'
+if_nix gnu && export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 
 
 alias ..='cd ..'
@@ -31,16 +42,31 @@ alias ll='ls -alhF'
 # -h: human readble size
 # -F: show extra symbol for each type of file
 
-alias vimzshrc='vim ~/.zshrc && source ~/.zshrc'
-alias vimbashrc='vim ~/.bashrc && source ~/.bashrc'
+function get_rc_file() {
+    if grep bash <<<$SHELL > /dev/null; then
+        echo "$HOME/.bashrc"
+    elif grep zsh <<<$SHELL > /dev/null; then
+        echo "$HOME/.zshrc"
+    else
+        return 1
+    fi
+}
 
 function vimrc() {
-    if grep bash <<<$SHELL > /dev/null; then
-        vimbashrc
-    elif grep zsh <<<$SHELL > /dev/null; then
-        vimzshrc
+    rcfile=$(get_rc_file)
+    if [ -z "$rcfile" ]; then
+        echo 'Unable to locate rcfile'
     else
-        echo 'Unable to locate shell rc file'
+        vim "$rcfile" && source "$rcfile"
+    fi
+}
+
+function reloadrc() {
+    rcfile=$(get_rc_file)
+    if [ -z "$rcfile" ]; then
+        echo 'Unable to locate rcfile'
+    else
+        source "$rcfile"
     fi
 }
 
