@@ -7,7 +7,8 @@ Install & update
 - Node: `nvm` `node (npm)`
 - Softwares: VSCode, Sublime Text, iTerm2
 - Disable accent menu: `defaults write -g ApplePressAndHoldEnabled -bool false`
-
+- [`fzf`](https://github.com/junegunn/fzf)
+- [`fd`](https://github.com/sharkdp/fd)?
 
 ## PostgreSQL Setup
 
