@@ -114,14 +114,19 @@ augroup CursorLine
 augroup END
 
 
-map <Enter> o<ESC>          " enter -> insert new line
-map <S-Enter> O<ESC>        " shift enter -> insert above
+" enter -> insert new line
+" shift enter -> insert above
+nnoremap <Enter> o<ESC>
+nnoremap <S-Enter> O<ESC>
 
-"                           " Discard x
+" Discard x
 nnoremap x "_x
 
-map Y y$                            " Make Y behave like D, C
-nnoremap <C-L> :nohl<CR><C-L>       " Redraw screen also set no highlight
+" Make Y behave like D, C
+map Y y$
+
+" Redraw screen also set no highlight
+nnoremap <C-L> :nohl<CR><C-L>
 
 
 " --- Add ^k, ^j Behavior ---
