@@ -10,6 +10,11 @@ export LESS='-RiF'
 # -X --no-init             : disable sending termcap initialization and deinitialization strings
 # -S --chop-long-lines     : chop instead of wrap long lines
 
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
 # LSCOLORS for BSD; LS_COLORS for linux
 # And here is a good website to modify it https://geoff.greer.fm/lscolors/
 export LSCOLORS='exfxcxdxbxegedabagacad'
