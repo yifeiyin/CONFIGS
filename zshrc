@@ -132,3 +132,24 @@ if which gpg > /dev/null; then
         export PINENTRY_USER_DATA="USE_CURSES=1"
     fi
 fi
+
+export QNOTE=~/Developer/quick-notes/src/posts
+function qnotef () {
+    cd $QNOTE
+    egrep -i "$1" ~/Developer/quick-notes/src/posts/*.md
+    cd -
+}
+
+function qnoteft() {
+    qnotef title: | sed 's|.*posts/||g' | sed 's/.md:title:/:/g' | egrep -i "$1"
+}
+
+function qnotee() {
+    cd $QNOTE
+    vim $(find . -type f -name '*'"$1"'*')
+    cd -
+}
+
+function ipgeo () {
+    curl -s "https://ipinfo.io/$1" | jq
+}
