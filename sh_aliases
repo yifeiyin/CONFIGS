@@ -74,7 +74,7 @@ function reloadrc() {
 alias vimr='vim -R'
 
 ########################## npm ##########################
-alias npmi='npm start'
+alias npmi='npm install'
 alias npms='npm start'
 alias npmd='npm run develop'
 alias npmb='npm build'
