@@ -102,8 +102,8 @@ alias grbi='git rebase --interactive'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
-alias gl='git l'
-alias gla='git la'
+alias gl='git log --pretty=format:"%C(yellow)%h%Creset %ar %Cred%d%Creset %Cblue%s%Creset %C(bold white)%an%Creset %C(bold white)%G?%Creset" --date=relative --graph'
+alias gla='git log --all --pretty=format:"%C(yellow)%h%Creset %ar %Cred%d%Creset %Cblue%s%Creset %C(bold white)%an%Creset %C(bold white)%G?%Creset" --date=relative --graph'
 
 alias gd='git diff'
 alias gdc='git diff --cached'
