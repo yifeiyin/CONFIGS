@@ -126,6 +126,7 @@ if which gpg > /dev/null; then
     # See https://unix.stackexchange.com/q/257061
     export GPG_TTY=$(tty)
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    eval "$(gpg-agent --daemon 2> /dev/null)"
 
     # See https://gpgtools.tenderapp.com/kb/faq/enter-passphrase-with-pinentry-in-terminal-via-ssh-connection
     if [[ -n "$SSH_CONNECTION" ]] ;then
@@ -153,3 +154,4 @@ function qnotee() {
 function ipgeo () {
     curl -s "https://ipinfo.io/$1" | jq
 }
+
