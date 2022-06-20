@@ -129,6 +129,10 @@ map Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 
+" --- ctrl-c copy to system clipboard ---
+:vnoremap <C-c> "*y
+
+
 " --- Add ^k, ^j Behavior ---
 nnoremap <C-K> 3kzz
 nnoremap <C-J> 3jzz
