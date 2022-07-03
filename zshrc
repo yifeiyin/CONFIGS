@@ -38,11 +38,6 @@ export PASSWORD_STORE_CHARACTER_SET_NO_SYMBOLS='[:alnum:]'
 
 # scripts
 export YY_SCRIPTS=~/Developer/SCRIPTS
-function yy-np() { python3 -i $YY_SCRIPTS/np-starter.py }
-function yy-fgi() { pbpaste | python3 $YY_SCRIPTS/format-github-images.py | pbcopy }
-function yy-h2p() { pbpaste | python3 $YY_SCRIPTS/html2points.py | pbcopy }
-source $YY_SCRIPTS/mymediadl
-source $YY_SCRIPTS/urlpaste
 function qnote() {
     FILE='/tmp/qnote_editing.md'
     pushd /Users/yyin/Developer/quick-notes > /dev/null
