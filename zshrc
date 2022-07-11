@@ -70,6 +70,9 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
+alias watch='watch '  # https://unix.stackexchange.com/a/25329
+alias typora="open -a typora"
+
 
 ########################## Other Tools ##########################
 
