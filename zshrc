@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
 plugins=(
-    git-prompt
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+#    git-prompt
+#    zsh-autosuggestions
+#    zsh-syntax-highlighting
     vi-mode
-    docker
-    docker-compose
+#    docker
+#    docker-compose
 )
 
 export ZSH="/Users/yyin/.oh-my-zsh"
@@ -21,15 +21,20 @@ COMPLETION_WAITING_DOTS="true"
 
 source "$ZSH/oh-my-zsh.sh"
 
+# https://github.com/Homebrew/homebrew-core/blob/master/Formula/zsh-syntax-highlighting.rb
+# brew install zsh-syntax-highlighting
+if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+else
+    echo 'Consider running "brew install zsh-syntax-highlighting"'
+fi
+
+
 ##############################################################
 
 [ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
 
 ########################## Personal ##########################
-
-# University SSH
-export UNISSH="yinyife2@mathlab.utsc.utoronto.ca"
-alias unissh="ssh $UNISSH"
 
 # password-store
 export PASSWORD_STORE_GENERATED_LENGTH=16
