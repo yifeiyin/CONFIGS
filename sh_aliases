@@ -103,6 +103,7 @@ alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
 alias gcp='git cherry-pick'
+alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 
 alias gl='git log --pretty=format:"%C(auto)%h%Creset %ar %C(auto)%d%Creset %C(blue)%s%Creset %C(auto)· %an%Creset" --graph'
