@@ -23,10 +23,10 @@ confirm && cp ./sh_aliases "$HOME/.sh_aliases" && echo 'Need to reloadrc'
 echo '--------------'
 
 echo 'FROM'
-wc -l "./vim/vimrc.vimrc"
+wc -l "./.vimrc"
 echo 'TO'
 wc -l "$HOME/.vimrc"
-confirm && cp "./vim/vimrc.vimrc" "$HOME/.vimrc"
+confirm && cp "./.vimrc" "$HOME/.vimrc"
 
 echo '--------------'
 
