@@ -102,6 +102,9 @@ alias grbi='git rebase --interactive'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+
 alias gl='git log --pretty=format:"%C(auto)%h%Creset %ar %C(auto)%d%Creset %C(blue)%s%Creset %C(auto)· %an%Creset" --graph'
 alias gla='git log --all --pretty=format:"%C(auto)%h%Creset %ar %C(auto)%d%Creset %C(blue)%s%Creset %C(auto)· %an%Creset" --graph'
 
@@ -114,7 +117,6 @@ alias gsw='git switch'
 alias gbr='git branch'
 alias gwt='git worktree'
 alias gst='git stash'
-alias gcp='git cherry-pick'
 
 alias gcleanff='git clean -fd'
 alias grst='git reset'
