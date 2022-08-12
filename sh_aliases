@@ -114,6 +114,7 @@ alias gsw='git switch'
 alias gbr='git branch'
 alias gwt='git worktree'
 alias gst='git stash'
+alias gcp='git cherry-pick'
 
 alias gcleanff='git clean -fd'
 alias grst='git reset'
