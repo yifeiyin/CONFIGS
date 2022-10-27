@@ -12,5 +12,6 @@ git config --global alias.alias "!git config --list | grep 'alias\\.' | sed 's/a
 git config --global init.defaultBranch main
 git config --global pull.ff only
 git config --global advice.detachedhead false
+git config --global push.autoSetupRemote true
 
 # git config --list --show-origin
