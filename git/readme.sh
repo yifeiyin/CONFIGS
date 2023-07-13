@@ -15,3 +15,7 @@ git config --global advice.detachedhead false
 git config --global push.autoSetupRemote true
 
 # git config --list --show-origin
+git config --global alias.l "log --oneline --graph"
+git config --global alias.la "log --oneline --graph --all"
+
+git config --global alias.pr '!zx ~/Developer/CONFIGS/git/push-and-pr.mjs'
