@@ -13,6 +13,8 @@ git config --global init.defaultBranch main
 git config --global pull.ff only
 git config --global advice.detachedhead false
 git config --global push.autoSetupRemote true
+git config --global merge.conflictStyle diff3
+
 
 # git config --list --show-origin
 git config --global alias.l "log --oneline --graph"
