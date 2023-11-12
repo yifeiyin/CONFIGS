@@ -9,7 +9,7 @@ plugins=(
 #    docker-compose
 )
 
-export ZSH="/Users/yyin/.oh-my-zsh"
+export ZSH="/home/yyin/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 export ZSH_THEME="pi"
 
@@ -25,6 +25,8 @@ source "$ZSH/oh-my-zsh.sh"
 # brew install zsh-syntax-highlighting
 if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+elif [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
     echo 'Consider running "brew install zsh-syntax-highlighting"'
 fi
@@ -98,9 +100,10 @@ export fpath=($fpath "$HOME/.ghcup/etc")  # auto complete
 
 ### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
 # PYENV_ROOT="~/.pyenv" (This is the default)
-export PATH="/Users/yyin/.local/bin:$PATH"
-eval "$(pyenv init -)"
-
+if type "pyenv" > /dev/null; then
+  export PATH="/Users/yyin/.local/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 ### Node version maanger: nvm https://github.com/nvm-sh/nvm#installing-and-updating
 export NVM_DIR="$HOME/.nvm"

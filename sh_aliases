@@ -43,10 +43,10 @@ alias ll='ls -alhF'
 # -F: show extra symbol for each type of file
 
 function get_rc_file() {
-    if grep bash <<<$SHELL > /dev/null; then
-        echo "$HOME/.bashrc"
-    elif grep zsh <<<$SHELL > /dev/null; then
+    if grep zsh <<<$SHELL > /dev/null; then
         echo "$HOME/.zshrc"
+    elif grep bash <<<$SHELL > /dev/null; then
+        echo "$HOME/.bashrc"
     else
         return 1
     fi
@@ -125,11 +125,17 @@ alias gtrash='git stash push --include-untracked -m "trash"'
 
 
 ########################## pass ##########################
-if if_nix bsd && which pass > /dev/null; then
+if which pass > /dev/null; then
     alias p='pass'
     alias psync='pass git fetch && pass git rebase && pass git push'
 fi
 
 if if_nix bsd && which trash > /dev/null; then
     alias trash='trash -F'
+fi
+
+if ! which pbpaste > /dev/null; then
+    # apt info wl-clipboard
+    alias pbpaste=wl-paste
+    alias pbcopy=wl-copy
 fi
