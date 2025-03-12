@@ -9,7 +9,7 @@ plugins=(
 #    docker-compose
 )
 
-export ZSH="/home/yyin/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 export ZSH_THEME="pi"
 
