@@ -123,17 +123,6 @@ alias gcleanff='git clean -fd'
 alias grst='git reset'
 alias gtrash='git stash push --include-untracked -m "trash"'
 
-
-########################## pass ##########################
-if which pass > /dev/null; then
-    alias p='pass'
-    alias psync='pass git fetch && pass git rebase && pass git push'
-fi
-
-if if_nix bsd && which trash > /dev/null; then
-    alias trash='trash -F'
-fi
-
 if ! which pbpaste > /dev/null; then
     # apt info wl-clipboard
     alias pbpaste=wl-paste

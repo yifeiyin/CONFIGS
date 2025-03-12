@@ -36,30 +36,6 @@ fi
 
 [ -f "$HOME/.sh_aliases" ] && source "$HOME/.sh_aliases"
 
-########################## Personal ##########################
-
-# password-store
-export PASSWORD_STORE_GENERATED_LENGTH=16
-export PASSWORD_STORE_CHARACTER_SET='[:alnum:]\!\@\#\$\%\^\&\*\(\)\-\=\[\]\;\,\.\/\?'
-export PASSWORD_STORE_CHARACTER_SET_NO_SYMBOLS='[:alnum:]'
-
-# scripts
-export YY_SCRIPTS=~/Developer/SCRIPTS
-function qnote() {
-    FILE='/tmp/qnote_editing.md'
-    pushd /Users/yyin/Developer/quick-notes > /dev/null
-    if vim -c 'startinsert' "$FILE" && ./new < "$FILE"; then
-        rm -f "$FILE"
-        git add -A
-        git commit -m "Add new quick note using qnote"
-        git fetch
-        git rebase
-        git push
-    else
-        echo "Stopped"
-    fi
-    popd > /dev/null
-}
 
 ########################## Utility Tools ##########################
 
@@ -78,24 +54,12 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 alias watch='watch '  # https://unix.stackexchange.com/a/25329
-alias typora="open -a typora"
 
 
-########################## Other Tools ##########################
+########################## Tools ##########################
 
 ### PostgreSQL
 export PGDATA='/usr/local/var/postgres'
-
-### Android Studio https://developer.android.com/studio
-export ANDROID_SDK="/Users/yyin/Library/Android/sdk"
-export PATH="/Users/yyin/Library/Android/sdk/platform-tools:$PATH"
-
-
-### Haskell ghcup https://www.haskell.org/ghcup/
-# Official doc uses GHCUP_INSTALL_BASE_PREFIX first, then fallback to $HOME/.ghcup
-# [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-export fpath=($fpath "$HOME/.ghcup/etc")  # auto complete
 
 
 ### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
@@ -115,9 +79,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 
+### Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "/Users/yyin/.bun/_bun" ] && source "/Users/yyin/.bun/_bun"
+
 ### macOS unlock keychain
 if which security > /dev/null; then
-    function unlock() {
+    function unlock_keychain() {
         if $(security unlock -p 123 2> /dev/null); then
             echo 'Already unlocked'
         else
@@ -140,23 +109,8 @@ if which gpg > /dev/null; then
     fi
 fi
 
-export QNOTE=~/Developer/quick-notes/src/posts
-function qnotef () {
-    cd $QNOTE
-    egrep -i "$1" ~/Developer/quick-notes/src/posts/*.md
-    cd -
-}
 
-function qnoteft() {
-    qnotef title: | sed 's|.*posts/||g' | sed 's/.md:title:/:/g' | egrep -i "$1"
-}
-
-function qnotee() {
-    cd $QNOTE
-    vim $(find . -type f -name '*'"$1"'*')
-    cd -
-}
-
+### IP address to location
 function ipgeo () {
     curl -s "https://ipinfo.io/$1" | jq
 }
