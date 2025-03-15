@@ -69,11 +69,10 @@ if type "pyenv" > /dev/null; then
   eval "$(pyenv init -)"
 fi
 
-### Node version maanger: nvm https://github.com/nvm-sh/nvm#installing-and-updating
+### Node version manager: nvm https://github.com/nvm-sh/nvm#installing-and-updating
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
