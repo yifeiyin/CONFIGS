@@ -11,7 +11,7 @@ plugins=(
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
-export ZSH_THEME="pi"
+export ZSH_THEME="robbyrussell"
 
 # Adapted from original template:
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
