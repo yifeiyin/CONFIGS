@@ -1,12 +1,7 @@
 #!/usr/bin/env zsh
 
 plugins=(
-#    git-prompt
-#    zsh-autosuggestions
-#    zsh-syntax-highlighting
     vi-mode
-#    docker
-#    docker-compose
 )
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -57,10 +52,6 @@ alias watch='watch '  # https://unix.stackexchange.com/a/25329
 
 
 ########################## Tools ##########################
-
-### PostgreSQL
-export PGDATA='/usr/local/var/postgres'
-
 
 ### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
 # PYENV_ROOT="~/.pyenv" (This is the default)
