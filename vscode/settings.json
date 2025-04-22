@@ -1,106 +1,109 @@
 {
-    "window.zoomLevel": 2,
-    "files.trimTrailingWhitespace": true,
-    "html.autoClosingTags": false,
-    "workbench.colorTheme": "Yi Light",
-    "explorer.confirmDelete": false,
-    "git.enableSmartCommit": true,
-    "workbench.sideBar.location": "left",
-    "breadcrumbs.enabled": false,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "workbench.activityBar.visible": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.smoothScrolling": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.associations": {
-        "*.js": "javascriptreact"
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        },
+        "editor.wordWrap": "on"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "breadcrumbs.enabled": true,
     "cSpell.userWords": [
-        "CSCC",
-        "Gmail",
-        "Photoshop",
-        "Unmount",
-        "Utor",
-        "Xcode",
-        "arange",
-        "binarization",
-        "coef",
-        "coefs",
-        "dtype",
-        "middlewares",
-        "ndarray",
-        "numpy",
-        "promisification",
-        "pyplot",
-        "repo",
-        "rgba",
-        "swiper",
-        "tidyverse",
-        "utsc",
-        "waka",
         "yifei",
         "yifeiyin",
-        "yinyife"
+        "yinyife",
+        "yyin"
     ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.accessibilitySupport": "off",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.insertSpaces": false,
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.size": "fit",
+    "editor.smoothScrolling": true,
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableCommitSigning": false,
+    "git.enableSmartCommit": true,
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "plaintext": false
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.donotVerifyTags": true,
-    "workbench.tree.indent": 20,
-    "workbench.editor.tabSizing": "shrink",
-    "gitlens.hovers.annotations.enabled": false,
-    "gitlens.hovers.enabled": false,
-    "gitlens.hovers.currentLine.enabled": false,
-    "gitlens.currentLine.enabled": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "gitlens.views.repositories.files.layout": "list",
-    "editor.minimap.renderCharacters": false,
-    "editor.minimap.enabled": false,
-    "python.jediEnabled": false,
-    "explorer.confirmDragAndDrop": false,
-    "workbench.startupEditor": "welcomePage",
-    "gitlens.advanced.messages": {
-        "suppressLineUncommittedWarning": true
-    },
-    "html.format.wrapLineLength": 0,
-    "gitlens.menus": {
-        "editor": {
-            "blame": false,
-            "clipboard": true,
-            "compare": true,
-            "details": false,
-            "history": false,
-            "remote": false
+    "python.defaultInterpreterPath": "/Users/yyin/.pyenv/versions/3.8.2/bin/python",
+    "python.languageServer": "Pylance",
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "args": [],
+            "icon": "terminal-cmd",
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ]
         },
-        "editorGroup": false,
-        "editorTab": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
+        "Git Bash": {
+            "source": "Git Bash"
         },
-        "explorer": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
+        "PowerShell": {
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
         },
-        "scmGroup": {
-            "compare": true,
-            "openClose": true,
-            "stash": true,
-            "stashInline": true
-        },
-        "scmItem": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true,
-            "stash": true
+        "Ubuntu (WSL)": {
+            "args": [
+                "-d",
+                "Ubuntu"
+            ],
+            "path": "C:\\Windows\\System32\\wsl.exe"
         }
     },
-    "emmet.includeLanguages": {
-        "html.erb": "html"
-    }
-
+    "terminal.integrated.tabs.enabled": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.activityBar.location": "top",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.preferredDarkColorTheme": "Yi Dark",
+    "workbench.preferredLightColorTheme": "Visual Studio Light",
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": true,
+    "workbench.tree.indent": 16
 }

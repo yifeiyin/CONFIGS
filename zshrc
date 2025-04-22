@@ -55,15 +55,15 @@ alias watch='watch '  # https://unix.stackexchange.com/a/25329
 
 ### Python environment manager: pyenv https://github.com/pyenv/pyenv#installation
 # PYENV_ROOT="~/.pyenv" (This is the default)
-if type "pyenv" > /dev/null; then
+if type 'pyenv' > /dev/null; then
   export PATH="/Users/yyin/.local/bin:$PATH"
   eval "$(pyenv init -)"
 fi
 
 ### Node version manager: nvm https://github.com/nvm-sh/nvm#installing-and-updating
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
@@ -85,7 +85,6 @@ if which security > /dev/null; then
     }
 fi
 
-
 ### GPG
 if which gpg > /dev/null; then
     # See https://unix.stackexchange.com/q/257061
@@ -98,7 +97,6 @@ if which gpg > /dev/null; then
         export PINENTRY_USER_DATA="USE_CURSES=1"
     fi
 fi
-
 
 ### IP address to location
 function ipgeo () {

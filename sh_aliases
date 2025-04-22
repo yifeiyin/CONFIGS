@@ -70,14 +70,18 @@ function reloadrc() {
     fi
 }
 
-########################## vim ##########################
+if ! which pbpaste > /dev/null; then
+    # apt info wl-clipboard
+    alias pbpaste=wl-paste
+    alias pbcopy=wl-copy
+fi
+
+
+# Vim in readonly mode
 alias vimr='vim -R'
 
-########################## npm ##########################
-alias npmi='npm install'
-alias npms='npm start'
-alias npmd='npm run develop'
-alias npmb='npm build'
+# Highlight regex using grep
+alias greph="egrep -e '\$' -e"
 
 ########################## git ##########################
 # Adapted from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
@@ -123,8 +127,11 @@ alias gcleanff='git clean -fd'
 alias grst='git reset'
 alias gtrash='git stash push --include-untracked -m "trash"'
 
-if ! which pbpaste > /dev/null; then
-    # apt info wl-clipboard
-    alias pbpaste=wl-paste
-    alias pbcopy=wl-copy
-fi
+function git_push_and_pr() {
+  local current_branch=$(git branch --show-current)
+  local previous_branch=$(git rev-parse --symbolic-full-name --abbrev-ref=loose @{-1})
+  git push -u origin $current_branch
+  gh pr create --base $previous_branch --head $current_branch --web
+}
+
+alias gpr='git_push_and_pr'
