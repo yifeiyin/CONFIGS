@@ -66,7 +66,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ### Command line fuzzy finder: fzf https://github.com/junegunn/fzf#installation
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+source <(fzf --zsh)
 
 
 ### Bun
