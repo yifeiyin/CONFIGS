@@ -16,6 +16,12 @@ COMPLETION_WAITING_DOTS="true"
 
 source "$ZSH/oh-my-zsh.sh"
 
+# Oh My Zsh Update Options
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#update-settings
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 30
+zstyle ':omz:update' verbosity minimal
+
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/zsh-syntax-highlighting.rb
 # brew install zsh-syntax-highlighting
 if [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
