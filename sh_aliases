@@ -83,6 +83,20 @@ alias vimr='vim -R'
 # Highlight regex using grep
 alias greph="egrep -e '\$' -e"
 
+
+########################## npm ##########################
+alias npmi='npm install'
+alias npmr='npm run'
+alias npmd='npm run dev'
+alias npms='npm run start'
+
+########################## bun ##########################
+alias buni='bun install'
+alias bunr='bun run'
+alias bund='bun run dev'
+alias buns='bun run start'
+
+
 ########################## git ##########################
 # Adapted from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
 alias gs='git status'
