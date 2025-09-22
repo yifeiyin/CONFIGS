@@ -92,4 +92,22 @@
         "key": "ctrl+3",
         "command": "workbench.action.focusThirdEditorGroup"
     },
+    {
+        "key": "cmd+[",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "cmd+]",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "cmd+[",
+        "command": "-editor.action.outdentLines",
+    },
+    {
+        "key": "cmd+]",
+        "command": "-editor.action.indentLines",
+    },
 ]
